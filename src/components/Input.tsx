@@ -57,11 +57,11 @@ const inputVariantStyles = ({
   switch (variant) {
     case 'primary':
       return `
-        border-color: ${theme.color.primary};
+        border: 1px solid ${theme.color.primary};
       `;
     case 'secondary':
       return `
-        border-color: ${theme.color.grey200};
+        border: 1px solid ${theme.color.grey200};
       `;
     default:
       return '';
