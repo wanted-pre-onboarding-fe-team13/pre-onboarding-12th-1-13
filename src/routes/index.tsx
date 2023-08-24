@@ -1,5 +1,5 @@
 import { useRoutes } from 'react-router-dom';
-import { SignIn, SignUp, Todo } from '../pages';
+import { SignIn, SignUp } from '../pages';
 import { todoRoutes } from './todo';
 
 const Router = () =>
