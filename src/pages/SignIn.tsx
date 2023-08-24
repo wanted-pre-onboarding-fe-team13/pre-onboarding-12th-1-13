@@ -9,7 +9,7 @@ import { styled } from 'styled-components';
 
 const SignIn = () => {
   const { login } = useAuthContext();
-  const navigate = useNavigate();
+
   const [inputData, setInputData] = useState<UserSignInput>({ email: '', password: '' });
 
   const isValid = isValidEmail(inputData.email) && isValidPassword(inputData.password);
