@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'small' | 'medium' | 'large';
@@ -22,8 +22,10 @@ const StyledButton = styled.button<ButtonProps>`
   border-radius: 4px;
   cursor: pointer;
   ${({ size }) => sizeStyles[size || 'medium']}
-  ${({ variant, disabled }) =>
-    disabled ? variantStyles.disabled : variantStyles[variant || 'primary']}
+  ${({ variant, disabled, theme }) =>
+    disabled
+      ? variantStyles({ variant: 'disabled', theme })
+      : variantStyles({ variant: variant || 'primary', theme })}
 `;
 
 const sizeStyles = {
@@ -41,23 +43,31 @@ const sizeStyles = {
   `,
 };
 
-const variantStyles = {
-  primary: `
-    background-color:#00d681;
-    color: #23274D;
-  `,
-  secondary: `
-    background-color: gray;
-    color: black;
-  `,
-  tertiary: `
-    background-color: white;
-    color: blue;
-    border: 1px solid blue;
-  `,
-  disabled: `
-    background-color: lightgray;
-    color: darkgray;
-    cursor: not-allowed;
-  `,
+const variantStyles = ({ theme, variant }: { theme: DefaultTheme; variant?: string }) => {
+  switch (variant) {
+    case 'primary':
+      return `
+        background-color: ${theme.color.primary};
+        color: ${theme.color.fontPrimary};
+      `;
+    case 'secondary':
+      return `
+        background-color: ${theme.color.grey200};  
+        color: ${theme.color.grey850};
+      `;
+    case 'tertiary':
+      return `
+        background-color: white;
+        color: ${theme.color.primary};  
+        border: 1px solid ${theme.color.primary}; 
+      `;
+    case 'disabled':
+      return `
+        background-color: ${theme.color.grey100};
+        color: ${theme.color.grey600}; 
+        cursor: not-allowed;
+      `;
+    default:
+      return '';
+  }
 };
