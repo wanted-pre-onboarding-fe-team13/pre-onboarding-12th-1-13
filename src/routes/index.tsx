@@ -7,6 +7,7 @@ const Router = () =>
     { path: '/', element: <Navigate to="/todo" replace /> },
     ...authRoutes,
     ...todoRoutes,
+    { path: '*', element: <Navigate to="/todo" replace /> },
   ]);
 
 export default Router;
