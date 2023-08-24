@@ -1,18 +1,31 @@
 import { useState } from 'react';
+import { Task } from '../../types/todo';
+import { useContextNullCheck } from '../../hooks/useContextNullCheck';
 import Button from '../Button';
 import Input from '../Input';
 
-interface Props {}
+export const TodoItem = (task: Task) => {
+  const { todo } = task;
 
-export const TodoItem = (props: Props) => {
+  const [editedTodo, seteditedTodo] = useState<Task>(task);
   const [isEditMode, setIsEditMode] = useState(false);
+  const { dispatch } = useContextNullCheck();
+  const { updateTask } = dispatch;
+
+  const handelCheck = async () => {
+    try {
+      await updateTask(task);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <li>
       <label>
-        <input type="checkbox" />
-        {!isEditMode && <span>할일 목록</span>}
-        {isEditMode && <Input data-testid="modify-input" />}
+        <input type="checkbox" checked={editedTodo.isCompleted} onChange={handelCheck} />
+        {!isEditMode && <span>{todo}</span>}
+        {isEditMode && <Input data-testid="modify-input" defaultValue={todo} />}
       </label>
       {!isEditMode && (
         <>
