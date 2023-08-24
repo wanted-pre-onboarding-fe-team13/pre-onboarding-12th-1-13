@@ -1,11 +1,11 @@
-import { PropsWithChildren, useCallback, useContext, useEffect } from 'react';
+import { PropsWithChildren, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const AuthGuard = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate();
 
-  // context 안에 provider 에서 create 한 것 받기
-  const { authenticated } = useContext();
+  const { authenticated } = useAuthContext();
 
   const checkAuthentication = useCallback(() => {
     if (authenticated) {
