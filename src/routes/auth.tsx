@@ -1,9 +1,9 @@
-import { lazy } from 'react';
+// import { lazy } from 'react';
 import { Outlet } from 'react-router-dom';
 import AuthGuard from '../guards/auth-guard';
 
-const SignInPage = lazy(() => import('../pages/SignIn'));
-const SignUpPage = lazy(() => import('../pages/SignUp'));
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
 
 export const authRoutes = [
   {
@@ -14,8 +14,8 @@ export const authRoutes = [
       </AuthGuard>
     ),
     children: [
-      { path: '/signin', element: <SignInPage /> },
-      { path: '/signup', element: <SignUpPage /> },
+      { path: '/signin', element: <SignIn /> },
+      { path: '/signup', element: <SignUp /> },
     ],
   },
 ];
