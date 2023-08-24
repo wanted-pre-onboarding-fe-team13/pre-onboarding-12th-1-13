@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { useContextNullCheck } from '../hooks/useContextNullCheck';
 import { TodoDispatchContext, TodoStateContext } from '../context/TodoProvider/TodoProvider';
+import { TodoList } from '../components/todo/TodoList';
 
 interface Props {}
 
@@ -11,8 +12,8 @@ export const Todo = (props: Props) => {
 
   return (
     <div>
-      <p>할 일 {todos.length}개 남음</p>
-      {todos?.map(({ id, ...data }) => <p key={id}>{data.todo}</p>)}
+      <p>할 일 {todos ? todos.length : 0}개 남음</p>
+      <TodoList todos={todos} />
       {/* <AddTodoBtn onClick={} /> */}
     </div>
   );
