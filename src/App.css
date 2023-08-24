@@ -1,12 +1,16 @@
 body {
-  background-color: #ffffff;
+  background-color: #f9f9fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 0; */
   width: 100vw;
   height: 100vh;
   font-family: 'Pretendard-Regular', 'Arial Narrow', Arial, sans-serif;
   font-weight: 400;
 }
 
-#root {
+/* #root {
   height: 100%;
   width: 100%;
-}
+} */
