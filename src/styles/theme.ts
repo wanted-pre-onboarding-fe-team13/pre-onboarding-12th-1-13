@@ -8,7 +8,7 @@ const color = {
   grey750: '#404040',
   grey850: '#262626',
 
-  primary: '##2AF0A3',
+  primary: '#2AF0A3',
   primaryLight: '#A9FDC4',
 
   fontPrimary: '#262626',
