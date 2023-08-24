@@ -1,5 +1,7 @@
 interface Props {}
 
-export const SignIn = (props: Props) => {
-  return <div></div>;
+const SignIn = (props: Props) => {
+  return <div>signin</div>;
 };
+
+export default SignIn;
