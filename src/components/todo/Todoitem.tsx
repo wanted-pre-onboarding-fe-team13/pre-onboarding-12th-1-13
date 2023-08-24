@@ -6,11 +6,11 @@ import Input from '../Input';
 
 export const TodoItem = (task: Task) => {
   const { todo, isCompleted } = task;
-
   const [isEditMode, setIsEditMode] = useState(false);
   const [EditedTodo, settEditedtodo] = useState(todo);
+
   const { dispatch } = useContextNullCheck();
-  const { updateTask } = dispatch;
+  const { updateTask, deleteTask } = dispatch;
 
   const handelCheckTodo = async () => {
     try {
@@ -24,6 +24,14 @@ export const TodoItem = (task: Task) => {
     try {
       await updateTask({ ...task, todo: EditedTodo });
       setIsEditMode(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleDeleteTodo = async () => {
+    try {
+      await deleteTask(task);
     } catch (e) {
       console.log(e);
     }
@@ -47,7 +55,9 @@ export const TodoItem = (task: Task) => {
           <Button data-testid="modify-button" onClick={() => setIsEditMode(true)}>
             수정
           </Button>
-          <Button data-testid="delete-button">삭제</Button>
+          <Button data-testid="delete-button" onClick={handleDeleteTodo}>
+            삭제
+          </Button>
         </>
       )}
       {isEditMode && (

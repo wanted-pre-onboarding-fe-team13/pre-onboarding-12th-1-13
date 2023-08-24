@@ -43,6 +43,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
   async function deleteTask(todo: Task) {
     const { id } = todo;
     await deleteTodo(id);
+    fetchTodos();
   }
 
   return (
