@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const axiosClient = () => {
+export const axiosClient = () => {
   return axios.create({
     baseURL: 'https://www.pre-onboarding-selection-task.shop',
   });
