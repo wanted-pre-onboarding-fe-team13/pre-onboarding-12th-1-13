@@ -9,7 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ children, variant, testId, size, disabled = false, ...rest }: ButtonProps) => {
   return (
-    <StyledButton data-testid={testId} disabled={disabled} {...rest}>
+    <StyledButton variant={variant} size={size} data-testid={testId} disabled={disabled} {...rest}>
       {children}
     </StyledButton>
   );
