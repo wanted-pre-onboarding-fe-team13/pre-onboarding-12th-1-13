@@ -1,16 +1,13 @@
-import Todoguard from '../guards/Todoguard';
-//Import Todoprovider
+import { TodoProvider } from '../context/TodoProvider/TodoProvider';
 import { Todo } from '../pages';
 
 export const todoRoutes = [
   {
     path: '/todo',
     element: (
-      <Todoguard>
-        {/* <TodoProvider> */}
+      <TodoProvider>
         <Todo />
-        {/* </TodoProvider> */}
-      </Todoguard>
+      </TodoProvider>
     ),
   },
 ];

@@ -2,6 +2,8 @@ body {
   background-color: #ffffff;
   width: 100vw;
   height: 100vh;
+  font-family: 'Pretendard-Regular', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 400;
 }
 
 #root {
