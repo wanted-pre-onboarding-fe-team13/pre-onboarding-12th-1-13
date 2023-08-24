@@ -1,11 +1,11 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import { Task } from '../../types/todo';
-import { createTodo, getTodos } from '../../apis/todoApi';
+import { createTodo, deleteTodo, getTodos, updateTodo } from '../../apis/todoApi';
 
 interface TodoDispatch {
-  addTask: (todo: string) => void;
-  updateTask: () => void;
-  deleteTask: () => void;
+  addTask: (content: string) => void;
+  updateTask: (todo: Task) => void;
+  deleteTask: (todo: Task) => void;
 }
 
 export const TodoStateContext = createContext<Task[] | null>(null);
@@ -29,12 +29,20 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
     return data;
   };
 
-  async function addTask(todo: string) {
-    const { data } = await createTodo(todo);
+  async function addTask(content: string) {
+    await createTodo(content);
     fetchTodos();
   }
-  function updateTask() {}
-  function deleteTask() {}
+
+  async function updateTask(todo: Task) {
+    const { id, todo: content, isCompleted } = todo;
+    await updateTodo(id, content, isCompleted);
+  }
+
+  async function deleteTask(todo: Task) {
+    const { id } = todo;
+    await deleteTodo(id);
+  }
 
   return (
     <TodoStateContext.Provider value={todoState}>
