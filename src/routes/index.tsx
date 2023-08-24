@@ -4,7 +4,7 @@ import { authRoutes } from './auth';
 
 const Router = () =>
   useRoutes([
-    { path: '/', element: <Navigate to="/signin" replace /> },
+    { path: '/', element: <Navigate to="/todo" replace /> },
     ...authRoutes,
     ...todoRoutes,
   ]);
