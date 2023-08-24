@@ -5,6 +5,8 @@ export const useContextNullCheck = () => {
   const state = useContext(TodoStateContext);
   const dispatch = useContext(TodoDispatchContext);
 
+  console.log(state);
+
   if (state === null) throw new Error('Cannot find TodoState');
   if (dispatch === null) throw new Error('Cannot find TodoDispatch');
 
