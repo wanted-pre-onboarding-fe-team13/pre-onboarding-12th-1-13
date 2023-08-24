@@ -5,16 +5,25 @@ import Button from '../Button';
 import Input from '../Input';
 
 export const TodoItem = (task: Task) => {
-  const { todo } = task;
+  const { todo, isCompleted } = task;
 
-  const [editedTodo, seteditedTodo] = useState<Task>(task);
   const [isEditMode, setIsEditMode] = useState(false);
+  const [EditedTodo, settEditedtodo] = useState(todo);
   const { dispatch } = useContextNullCheck();
   const { updateTask } = dispatch;
 
-  const handelCheck = async () => {
+  const handelCheckTodo = async () => {
     try {
-      await updateTask(task);
+      await updateTask({ ...task, isCompleted: !isCompleted });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handelUpdateTodo = async () => {
+    try {
+      await updateTask({ ...task, todo: EditedTodo });
+      setIsEditMode(false);
     } catch (e) {
       console.log(e);
     }
@@ -23,9 +32,15 @@ export const TodoItem = (task: Task) => {
   return (
     <li>
       <label>
-        <input type="checkbox" checked={editedTodo.isCompleted} onChange={handelCheck} />
+        <input type="checkbox" checked={isCompleted} onChange={handelCheckTodo} />
         {!isEditMode && <span>{todo}</span>}
-        {isEditMode && <Input data-testid="modify-input" defaultValue={todo} />}
+        {isEditMode && (
+          <Input
+            data-testid="modify-input"
+            defaultValue={todo}
+            onChange={e => settEditedtodo(e.target.value)}
+          />
+        )}
       </label>
       {!isEditMode && (
         <>
@@ -37,7 +52,9 @@ export const TodoItem = (task: Task) => {
       )}
       {isEditMode && (
         <>
-          <Button data-testid="submit-button">제출</Button>
+          <Button data-testid="submit-button" onClick={handelUpdateTodo}>
+            제출
+          </Button>
           <Button data-testid="cancel-button" onClick={() => setIsEditMode(false)}>
             취소
           </Button>

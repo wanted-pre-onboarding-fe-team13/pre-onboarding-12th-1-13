@@ -11,7 +11,7 @@ const TodoGuard = ({ children }: PropsWithChildren) => {
   //authentication 체크해주는 함수
   const checkAuthentication = useCallback(() => {
     if (!authenticated) {
-      // navigate('/signin');
+      navigate('/signin');
     } else {
       setChecked(true);
     }
