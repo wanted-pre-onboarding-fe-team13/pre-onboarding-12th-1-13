@@ -7,9 +7,9 @@ export const todoRoutes = [
     path: '/todo',
     element: (
       <Todoguard>
-        <TodoProvider>
-          <Todo />
-        </TodoProvider>
+        {/* <TodoProvider> */}
+        <Todo />
+        {/* </TodoProvider> */}
       </Todoguard>
     ),
   },
