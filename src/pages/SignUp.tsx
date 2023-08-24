@@ -67,11 +67,20 @@ export default SignUp;
 
 const Container = styled.div`
   display: flex;
+<<<<<<< HEAD
+=======
+  background-color: white;
+>>>>>>> 1e98d4a4927aefdc449b4e8aab81a3d61b5a14d0
   flex-direction: column;
   align-items: flex-start;
   padding: 25px;
   width: 40vw;
   height: 60vh;
   min-width: 200px;
+<<<<<<< HEAD
   border: 1px solid black;
+=======
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+>>>>>>> 1e98d4a4927aefdc449b4e8aab81a3d61b5a14d0
 `;
