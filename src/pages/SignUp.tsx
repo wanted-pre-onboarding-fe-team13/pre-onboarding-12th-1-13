@@ -4,8 +4,8 @@ import { UserSignInput } from '../types/type';
 import { isValidEmail, isValidPassword } from '../utils/utils';
 
 const SignUp = () => {
+  // context 가져오기
   const navigate = useNavigate();
-
   const [inputValue, setInputValue] = useState<UserSignInput>({ email: '', password: '' });
 
   const isValid = isValidEmail(inputValue.email) && isValidPassword(inputValue.password);
