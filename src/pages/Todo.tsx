@@ -1,34 +1,35 @@
 import styled from 'styled-components';
-import { useContext, useEffect, useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useContextNullCheck } from '../hooks/useContextNullCheck';
-import { TodoDispatchContext, TodoStateContext } from '../context/TodoProvider/TodoProvider';
 import { TodoList } from '../components/todo/TodoList';
 import { NewTodoForm } from '../components/todo';
 import Button from '../components/Button';
 
 export const Todo = () => {
-  const { state: todos, dispatch } = useContextNullCheck();
-  const { addTask, updateTask, deleteTask } = dispatch;
+  const { state: todos } = useContextNullCheck();
   const [isFormOpen, setOIsFormOpen] = useState(false);
+  const notCompletedTodo = useMemo(() => {
+    return todos.filter(i => !i.isCompleted).length;
+  }, [todos]);
 
   return (
     <div>
-      <p>할 일 {todos ? todos.length : 0}개 남음</p>
+      <p>할 일 {notCompletedTodo}개 남음</p>
       <TodoList todos={todos} />
-      <FormOpenBtn onClick={() => setOIsFormOpen(!isFormOpen)}>
-        <span />
-        <span />
-      </FormOpenBtn>
+      <FormOpenBtn onClick={() => setOIsFormOpen(!isFormOpen)}>+</FormOpenBtn>
       {isFormOpen && <NewTodoForm closeForm={() => setOIsFormOpen(!isFormOpen)} />}
     </div>
   );
 };
 
 const FormOpenBtn = styled(Button)`
-  position: relative;
+  padding: 0;
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  font-size: 45px;
+  line-height: 45px;
+  color: white;
 
   span {
     position: absolute;
