@@ -45,8 +45,7 @@ const Title = styled.h1`
   text-align: left;
 
   p {
-    margin-bottom: 0;
-    margin-top: 10px;
+    margin: 10px 0 40px;
     font-size: 15px;
     color: ${theme.color.grey300};
   }
@@ -60,6 +59,7 @@ const TodoSubTit = styled.p`
 `;
 
 const Divider = styled.hr`
+  margin: 20px 0;
   width: 100%;
   height: 1px;
   background: ${theme.color.grey50};
