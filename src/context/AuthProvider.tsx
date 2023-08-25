@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { useState, useEffect, createContext, useCallback, PropsWithChildren } from "react";
+import { useState, useEffect, createContext, useCallback, PropsWithChildren } from 'react';
 
-import { signin, signup } from "../apis/authApi";
+import { signin, signup } from '../apis/auth';
 
-import { isValidToken, setLocalStorage } from "../utils/auth";
+import { isValidToken, setLocalStorage } from '../utils/auth';
 
 interface AuthContextType {
   authenticated: boolean;
@@ -20,10 +20,10 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     const accessToken = localStorage.getItem('access_token');
-    
+
     if (accessToken && isValidToken(accessToken)) {
       setLocalStorage(accessToken);
-      
+
       setAuthenticated(true);
     }
 
@@ -31,7 +31,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
-    const accessToken = await signin({email, password});
+    const accessToken = await signin({ email, password });
 
     setLocalStorage(accessToken);
 
@@ -39,21 +39,21 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   const regist = useCallback(async (email: string, password: string) => {
-    await signup({email, password});
+    await signup({ email, password });
   }, []);
-  
+
   if (loading) {
     return null;
   }
 
   return (
     <AuthContext.Provider
-    value={{
-      authenticated,
-      loading,
-      login,
-      regist,
-    }}
+      value={{
+        authenticated,
+        loading,
+        login,
+        regist,
+      }}
     >
       {children}
     </AuthContext.Provider>

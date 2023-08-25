@@ -2,7 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from 'react';
 
 import { Task } from '../types/todo';
 
-import { createTodo, deleteTodo, getTodos, updateTodo } from '../apis/todoApi';
+import { createTodo, deleteTodo, getTodos, updateTodo } from '../apis/todo';
 
 interface TodoDispatch {
   addTask: (content: string) => void;
