@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
   height: 100vh;
   font-family: 'Pretendard-Regular', 'Arial Narrow', Arial, sans-serif;
   font-weight: 400;
-}
+  }
 `;
 
 export default GlobalStyle;
