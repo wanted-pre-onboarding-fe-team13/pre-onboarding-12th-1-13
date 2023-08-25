@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import styled from 'styled-components';
 
-import { Task } from '../../types/todo';
+import { Task } from '../../types';
 
 import { useTodoContext } from '../../hooks/useTodoContext';
 

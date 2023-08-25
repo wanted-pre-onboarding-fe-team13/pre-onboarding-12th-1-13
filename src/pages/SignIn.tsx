@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 
 import { styled } from 'styled-components';
 
-import { UserSignInput } from '../types/type';
+import { UserSignInput } from '../types';
 
 import { useAuthContext } from '../hooks/useAuthContext';
 

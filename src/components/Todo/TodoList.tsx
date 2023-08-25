@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Task } from '../../types/todo';
+import { Task } from '../../types';
 
 import theme from '../../styles/theme';
 

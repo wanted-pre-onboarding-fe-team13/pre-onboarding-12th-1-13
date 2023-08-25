@@ -1,9 +1,15 @@
 import { ChangeEvent, useState } from 'react';
+
 import { useNavigate } from 'react-router';
+
 import { styled } from 'styled-components';
-import { UserSignInput } from '../types/type';
-import { isValidEmail, isValidPassword } from '../utils/auth';
+
+import { UserSignInput } from '../types';
+
 import { useAuthContext } from '../hooks/useAuthContext';
+
+import { isValidEmail, isValidPassword } from '../utils/auth';
+
 import Button from '../components/Button';
 import Input from '../components/Input';
 
