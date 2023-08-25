@@ -1,27 +1,35 @@
+import { ChangeEvent, KeyboardEvent, MouseEventHandler, useState } from 'react';
+
 import styled from 'styled-components';
-import { ChangeEvent, MouseEventHandler, KeyboardEvent, useState } from 'react';
+
+import { useTodoContext } from '../../hooks/useTodoContext';
+
 import Input from '../Input';
 import Button from '../Button';
-import { useContextNullCheck } from '../../hooks/useContextNullCheck';
 
 export const NewTodoForm = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [newTodo, setNewTodo] = useState<string>('');
-  const { dispatch } = useContextNullCheck();
+  const [newTodo, setNewTodo] = useState('');
+
+  const { dispatch } = useTodoContext();
+
   const { addTask } = dispatch;
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewTodo(e.target.value);
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setNewTodo(event.target.value);
   };
 
-  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     try {
-      if (e.key === 'Enter' && e.nativeEvent.isComposing === false) {
-        e.preventDefault();
+      if (event.key === 'Enter' && event.nativeEvent.isComposing === false) {
+        event.preventDefault();
+
         if (!newTodo) {
           return;
         }
+
         addTask(newTodo);
+
         setIsFormOpen(false);
         setNewTodo('');
       }
@@ -33,16 +41,19 @@ export const NewTodoForm = () => {
   const handleSubmitNewTodo: MouseEventHandler<HTMLButtonElement> = e => {
     if (!isFormOpen) {
       setIsFormOpen(true);
-    } else {
-      try {
-        if (newTodo) {
-          addTask(newTodo);
-          setNewTodo('');
-          setIsFormOpen(false);
-        }
-      } catch (e) {
-        console.error(e);
+
+      return;
+    }
+
+    try {
+      if (newTodo) {
+        addTask(newTodo);
+
+        setIsFormOpen(false);
+        setNewTodo('');
       }
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -51,7 +62,6 @@ export const NewTodoForm = () => {
       {isFormOpen && (
         <Input
           data-testid="new-todo-input"
-          style={{ width: '67%' }}
           variant="primary"
           inputSize="large"
           placeholder="추가할 할 일을 입력해주세요."
@@ -78,6 +88,10 @@ const NewTodoContainer = styled.form`
   align-items: center;
   justify-content: center;
   gap: 10px;
+
+  input {
+    width: 67%;
+  }
 `;
 
 const AddTodoBtn = styled(Button)`

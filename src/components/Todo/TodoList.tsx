@@ -1,19 +1,25 @@
 import styled from 'styled-components';
+
+import { Task } from '../../types';
+
 import theme from '../../styles/theme';
-import { Task } from '../../types/todo';
+
 import { TodoItem } from './TodoItem';
 
-interface Props {
+interface TodoListProps {
   todos: Task[];
 }
 
-export const TodoList = ({ todos }: Props) => {
-  return (
-    <TodoListWrap>
-      {todos?.map(task => <TodoItem key={task.id} {...task} />)}
-      {todos.length === 0 && <NoTodoTxt>할 일이 없습니다.</NoTodoTxt>}
-    </TodoListWrap>
-  );
+export const TodoList = ({ todos }: TodoListProps) => {
+  if (todos.length === 0) {
+    return (
+      <TodoListWrap>
+        <EmptyTodoTxt>할 일이 없습니다.</EmptyTodoTxt>
+      </TodoListWrap>
+    );
+  }
+
+  return <TodoListWrap>{todos?.map(task => <TodoItem key={task.id} task={task} />)}</TodoListWrap>;
 };
 
 const TodoListWrap = styled.ul`
@@ -23,7 +29,7 @@ const TodoListWrap = styled.ul`
   overflow: auto;
 `;
 
-const NoTodoTxt = styled.li`
+const EmptyTodoTxt = styled.li`
   position: absolute;
   top: 45%;
   left: 50%;

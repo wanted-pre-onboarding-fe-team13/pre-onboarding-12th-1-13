@@ -1,21 +1,9 @@
 import 'styled-components';
 
+import theme from '../styles/theme';
+
+type Theme = typeof theme;
+
 declare module 'styled-components' {
-  export interface DefaultTheme {
-    color: {
-      grey50: string;
-      grey100: string;
-      grey200: string;
-      grey300: string;
-      grey600: string;
-      grey750: string;
-      grey850: string;
-
-      primary: string;
-      primaryLight: string;
-
-      fontPrimary: string;
-      fontSecondary: string;
-    };
-  }
+  export interface DefaultTheme extends Theme {}
 }

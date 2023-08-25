@@ -1,7 +1,8 @@
 import { useContext } from 'react';
+
 import { TodoDispatchContext, TodoStateContext } from '../context/TodoProvider';
 
-export const useContextNullCheck = () => {
+export const useTodoContext = () => {
   const state = useContext(TodoStateContext);
   const dispatch = useContext(TodoDispatchContext);
 

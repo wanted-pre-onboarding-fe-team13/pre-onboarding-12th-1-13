@@ -1,28 +1,42 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
+
 import { useNavigate } from 'react-router';
-import { UserSignInput } from '../types/type';
-import { isValidEmail, isValidPassword } from '../utils/auth';
-import { useAuthContext } from '../hooks/useAuthContext';
+
 import { styled } from 'styled-components';
+
+import { UserSignInput } from '../types';
+
+import { useAuthContext } from '../hooks/useAuthContext';
+
+import { isValidEmail, isValidPassword } from '../utils/auth';
+
 import Button from '../components/Button';
 import Input from '../components/Input';
 
 const SignUp = () => {
-  const { regist } = useAuthContext();
   const navigate = useNavigate();
+
+  const { regist } = useAuthContext();
+
   const [inputValue, setInputValue] = useState<UserSignInput>({ email: '', password: '' });
 
   const isValid = isValidEmail(inputValue.email) && isValidPassword(inputValue.password);
 
-  const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+  const handleInputValueChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue({ ...inputValue, [event.target.name]: event.target.value });
   };
 
-  const signUpHandler = async (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSignUp = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!isValid) {
+      return;
+    }
+
     try {
-      await regist(inputValue.email, inputValue.password);
-      navigate('/signin');
+      regist(inputValue.email, inputValue.password);
+
+      goToSignIn();
     } catch (error) {
       console.error(error);
     }
@@ -35,13 +49,13 @@ const SignUp = () => {
   return (
     <Container>
       <Title>Sign Up</Title>
-      <Form onSubmit={signUpHandler}>
+      <Form onSubmit={handleSignUp}>
         <InputContainer>
           <Input
             testId="email-input"
             name="email"
             placeholder="you@example.com"
-            onChange={inputHandler}
+            onChange={handleInputValueChange}
             variant="primary"
             inputSize="large"
             autoComplete="username"
@@ -54,7 +68,7 @@ const SignUp = () => {
             autoComplete="current-password"
             inputSize="large"
             variant="primary"
-            onChange={inputHandler}
+            onChange={handleInputValueChange}
           />
         </InputContainer>
         <Button testId="signup-button" size="large" disabled={!isValid}>

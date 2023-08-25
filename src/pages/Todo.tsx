@@ -1,16 +1,23 @@
-import styled from 'styled-components';
 import { useMemo } from 'react';
-import { useContextNullCheck } from '../hooks/useContextNullCheck';
-import { NewTodoForm } from '../components/Todo/NewTodoForm';
-import { TodoList } from '../components/Todo/TodoList';
+
+import styled from 'styled-components';
+
+import { useTodoContext } from '../hooks/useTodoContext';
+
 import { getToday } from '../utils/date';
+
 import theme from '../styles/theme';
 
-export const Todo = () => {
-  const { state: todos } = useContextNullCheck();
+import { NewTodoForm } from '../components/Todo/NewTodoForm';
+import { TodoList } from '../components/Todo/TodoList';
+
+const Todo = () => {
+  const { state: todos } = useTodoContext();
+
   const notCompletedTodo = useMemo(() => {
     return todos.filter(i => !i.isCompleted).length;
   }, [todos]);
+
   const { year, month, date, day } = getToday();
 
   return (
@@ -25,6 +32,8 @@ export const Todo = () => {
     </Container>
   );
 };
+
+export default Todo;
 
 const Container = styled.div`
   position: relative;
