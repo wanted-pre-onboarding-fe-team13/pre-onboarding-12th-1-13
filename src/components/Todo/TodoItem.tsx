@@ -14,7 +14,7 @@ export const TodoItem = (task: Task) => {
   const { dispatch } = useContextNullCheck();
   const { updateTask, deleteTask } = dispatch;
 
-  const handelCheckTodo = async () => {
+  const handleCheckTodo = async () => {
     try {
       await updateTask({ ...task, isCompleted: !isCompleted });
     } catch (e) {
@@ -22,7 +22,7 @@ export const TodoItem = (task: Task) => {
     }
   };
 
-  const handelUpdateTodo = async () => {
+  const handleUpdateTodo = async () => {
     try {
       await updateTask({ ...task, todo: EditedTodo });
       setIsEditMode(false);
@@ -42,8 +42,8 @@ export const TodoItem = (task: Task) => {
   return (
     <TodoItemWrap>
       <label>
-        <StyledCheckbox type="checkbox" checked={isCompleted} onChange={handelCheckTodo} />
-        {!isEditMode && <TodoTxt isCompleted={isCompleted}>{todo}</TodoTxt>}
+        <StyledCheckbox type="checkbox" checked={isCompleted} onChange={handleCheckTodo} />
+        {!isEditMode && <TodoTxt $isCompleted={isCompleted}>{todo}</TodoTxt>}
         {isEditMode && (
           <Input
             data-testid="modify-input"
@@ -79,7 +79,7 @@ export const TodoItem = (task: Task) => {
         <div>
           <Button
             data-testid="submit-button"
-            onClick={handelUpdateTodo}
+            onClick={handleUpdateTodo}
             style={{ marginRight: '5px' }}
             size="small"
             variant="secondary"
@@ -101,7 +101,7 @@ export const TodoItem = (task: Task) => {
 };
 
 type TodoTxtProps = {
-  isCompleted: boolean;
+  $isCompleted: boolean;
 };
 
 const TodoItemWrap = styled.li`
@@ -121,8 +121,8 @@ const TodoTxt = styled.span<TodoTxtProps>`
   width: 150px;
   margin-left: 10px;
   font-size: 15px;
-  color: ${({ isCompleted }) => (isCompleted ? theme.color.grey200 : theme.color.fontPrimary)};
-  text-decoration: ${({ isCompleted }) => (isCompleted ? 'line-through' : 'none')};
+  color: ${({ $isCompleted }) => ($isCompleted ? theme.color.grey200 : theme.color.fontPrimary)};
+  text-decoration: ${({ $isCompleted }) => ($isCompleted ? 'line-through' : 'none')};
   word-break: break-word;
 `;
 
