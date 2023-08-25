@@ -16,10 +16,14 @@ export const NewTodoForm = ({ closeForm }: Props) => {
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && newTodo) {
-      addTask(newTodo);
-      setNewTodo('');
-      closeForm();
+    try {
+      if (e.key === 'Enter' && newTodo) {
+        addTask(newTodo);
+        setNewTodo('');
+        closeForm();
+      }
+    } catch (e) {
+      console.error(e);
     }
   };
 
