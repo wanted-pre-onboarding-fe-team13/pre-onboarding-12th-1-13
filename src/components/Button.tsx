@@ -7,9 +7,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   testId?: string;
 }
 
+type StyledButtonProps = Omit<ButtonProps, 'variant' | 'size'> & {
+  $variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled';
+  $size?: 'small' | 'medium' | 'large';
+};
+
 const Button = ({ children, variant, testId, size, disabled = false, ...rest }: ButtonProps) => {
   return (
-    <StyledButton variant={variant} size={size} data-testid={testId} disabled={disabled} {...rest}>
+    <StyledButton
+      $variant={variant}
+      $size={size}
+      data-testid={testId}
+      disabled={disabled}
+      {...rest}
+    >
       {children}
     </StyledButton>
   );
@@ -17,15 +28,16 @@ const Button = ({ children, variant, testId, size, disabled = false, ...rest }: 
 
 export default Button;
 
-const StyledButton = styled.button<ButtonProps>`
+const StyledButton = styled.button<StyledButtonProps>`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  ${({ size }) => sizeStyles[size || 'medium']}
-  ${({ variant, disabled, theme }) =>
+  ${({ $size }) => sizeStyles[$size || 'medium']}
+
+  ${({ $variant = 'primary', disabled, theme }) =>
     disabled
       ? variantStyles({ variant: 'disabled', theme })
-      : variantStyles({ variant: variant || 'primary', theme })}
+      : variantStyles({ variant: $variant, theme })}
 `;
 
 const sizeStyles = {
