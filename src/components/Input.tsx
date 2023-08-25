@@ -21,7 +21,7 @@ const StyledInput = styled.input<InputProps>`
   font-size: 16px;
   transition: border-color 0.3s;
   &:focus {
-    border-color: ${({ theme }) => theme.color.primary};
+    border: 1px solid ${({ theme }) => theme.color.grey200};
     outline: none;
   }
   ${({ inputSize }) => {
@@ -57,7 +57,7 @@ const inputVariantStyles = ({
   switch (variant) {
     case 'primary':
       return `
-        border: 1px solid ${theme.color.primary};
+        background-color:${theme.color.grey50};
       `;
     case 'secondary':
       return `

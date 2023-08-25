@@ -1,6 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 const color = {
+  grey50: '#f5f5f5',
   grey100: '#E5E5E5',
   grey200: '#CCCCCC',
   grey300: '#B3B3B3',
