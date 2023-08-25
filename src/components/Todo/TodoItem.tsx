@@ -118,7 +118,7 @@ const TodoItemWrap = styled.li`
 `;
 
 const TodoTxt = styled.span<TodoTxtProps>`
-  width: 74%;
+  width: 150px;
   margin-left: 10px;
   font-size: 15px;
   color: ${({ isCompleted }) => (isCompleted ? theme.color.grey200 : theme.color.fontPrimary)};
