@@ -36,7 +36,7 @@ const SignIn = () => {
           placeholder="email"
           onChange={handleInputValueChange}
           variant="primary"
-          inputSize="small"
+          inputSize="medium"
         />
         <Input
           testId="password-input"
@@ -55,6 +55,11 @@ export default SignIn;
 
 const Container = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 600px;
+  background-color: white;
 `;
 const Form = styled.form`
   display: flex;
