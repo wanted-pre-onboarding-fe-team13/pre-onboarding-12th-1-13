@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import { useAuthContext } from '../hooks/useAuthContext';
-import { isValidEmail, isValidPassword } from '../utils/utils';
+import { isValidEmail, isValidPassword } from '../utils/auth';
 import { ChangeEvent, useState } from 'react';
 import { UserSignInput } from '../types/type';
 import Input from '../components/Input';
