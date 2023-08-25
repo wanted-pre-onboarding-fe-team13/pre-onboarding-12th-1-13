@@ -13,9 +13,11 @@ import { TodoList } from '../components/Todo/TodoList';
 
 const Todo = () => {
   const { state: todos } = useTodoContext();
+
   const notCompletedTodo = useMemo(() => {
     return todos.filter(i => !i.isCompleted).length;
   }, [todos]);
+
   const { year, month, date, day } = getToday();
 
   return (

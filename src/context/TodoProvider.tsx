@@ -15,6 +15,7 @@ export const TodoDispatchContext = createContext<TodoDispatch | null>(null);
 
 export const TodoProvider = ({ children }: { children: ReactNode }) => {
   const [todoState, setTodoState] = useState<Task[]>([]);
+
   const dispatch: TodoDispatch = {
     addTask,
     updateTask,
@@ -27,24 +28,31 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
 
   const fetchTodos = async () => {
     const data = await getTodos();
+
     setTodoState(data);
+
     return data;
   };
 
   async function addTask(content: string) {
     await createTodo(content);
+
     fetchTodos();
   }
 
   async function updateTask(todo: Task) {
     const { id, todo: content, isCompleted } = todo;
+
     await updateTodo(id, content, isCompleted);
+
     fetchTodos();
   }
 
   async function deleteTask(todo: Task) {
     const { id } = todo;
+
     await deleteTodo(id);
+
     fetchTodos();
   }
 

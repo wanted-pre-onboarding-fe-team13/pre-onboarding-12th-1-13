@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 import { useNavigate } from 'react-router';
 
@@ -14,21 +14,27 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 
 const SignIn = () => {
-  const { login } = useAuthContext();
   const navigate = useNavigate();
+
+  const { login } = useAuthContext();
+
   const [inputData, setInputData] = useState<UserSignInput>({ email: '', password: '' });
 
   const isValid = isValidEmail(inputData.email) && isValidPassword(inputData.password);
 
-  const handleInputValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputData({ ...inputData, [e.target.name]: e.target.value });
+  const handleInputValueChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputData({ ...inputData, [event.target.name]: event.target.value });
   };
 
-  const handleLogin = async (e: ChangeEvent<HTMLFormElement>) => {
-    if (!isValid) return;
-    e.preventDefault();
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!isValid) {
+      return;
+    }
+
     try {
-      await login(inputData.email, inputData.password);
+      login(inputData.email, inputData.password);
     } catch (e) {
       console.error(e);
     }

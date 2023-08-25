@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useEffect } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -9,15 +9,11 @@ const AuthGuard = ({ children }: PropsWithChildren) => {
 
   const { authenticated } = useAuthContext();
 
-  const checkAuthentication = useCallback(() => {
+  useEffect(() => {
     if (authenticated) {
       navigate('/todo');
     }
-  }, [authenticated]);
-
-  useEffect(() => {
-    checkAuthentication();
-  }, [checkAuthentication]);
+  }, [authenticated, navigate]);
 
   return <>{children}</>;
 };

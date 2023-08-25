@@ -1,4 +1,4 @@
-import { PropsWithChildren, useCallback, useEffect, useState } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -8,19 +8,16 @@ const TodoGuard = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate();
 
   const { authenticated, loading } = useAuthContext();
+
   const [checked, setChecked] = useState(false);
 
-  const checkAuthentication = useCallback(() => {
+  useEffect(() => {
     if (!authenticated) {
       navigate('/signin');
     } else {
       setChecked(true);
     }
-  }, [authenticated]);
-
-  useEffect(() => {
-    checkAuthentication();
-  }, []);
+  }, [authenticated, navigate]);
 
   if (loading || !checked) {
     return null;
