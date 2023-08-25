@@ -33,7 +33,7 @@ const StyledInput = styled.input<InputProps>`
         `;
       case 'large':
         return `
-          font-size: 20px;
+          font-size: 16px;
           padding: 12px 24px;
         `;
       default:
