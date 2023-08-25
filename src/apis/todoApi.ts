@@ -1,8 +1,8 @@
-import { authInstance } from './axios';
+import { axiosInstance } from "./axios";
 
 export const getTodos = async () => {
   try {
-    const { data } = await authInstance.get('/todos');
+    const { data } = await axiosInstance.get('/todos');
     return data;
   } catch (err) {
     return;
@@ -11,7 +11,7 @@ export const getTodos = async () => {
 
 export const createTodo = async (todo: string) => {
   try {
-    const { data } = await authInstance.post(
+    const { data } = await axiosInstance.post(
       '/todos',
       { todo: todo },
       {
@@ -28,7 +28,7 @@ export const createTodo = async (todo: string) => {
 
 export const updateTodo = async (id: number, todo: string, isCompleted: boolean) => {
   try {
-    const { data } = await authInstance.put(
+    const { data } = await axiosInstance.put(
       `/todos/${id}`,
       { todo: todo, isCompleted: isCompleted },
       {
@@ -45,7 +45,7 @@ export const updateTodo = async (id: number, todo: string, isCompleted: boolean)
 
 export const deleteTodo = async (id: number) => {
   try {
-    await authInstance.delete(`todos/${id}`);
+    await axiosInstance.delete(`todos/${id}`);
   } catch (err) {
     return;
   }
