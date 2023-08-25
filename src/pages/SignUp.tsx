@@ -37,7 +37,7 @@ const SignUp = () => {
           inputSize="medium"
           name="email"
           variant="primary"
-          placeholder="name@gmail.com"
+          placeholder="you@example.com"
           onChange={inputHandler}
         />
         <Input
@@ -45,7 +45,7 @@ const SignUp = () => {
           inputSize="medium"
           name="password"
           variant="primary"
-          placeholder="••••••••"
+          placeholder="Minimum 8 characters"
           onChange={inputHandler}
         />
         <Button testId="signup-button" variant="primary" size="medium" disabled={!isValid}>
