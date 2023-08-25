@@ -4,6 +4,8 @@ import { UserSignInput } from '../types/type';
 import { isValidEmail, isValidPassword } from '../utils/utils';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { styled } from 'styled-components';
+import Button from '../components/Button';
+import Input from '../components/Input';
 
 const SignUp = () => {
   const { regist } = useAuthContext();
@@ -27,39 +29,33 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <Container>
-        <div>회원가입</div>
-        <form onSubmit={signUpHandler}>
-          <div>
-            <label>Email</label>
-            <input
-              data-testid="email-input"
-              name="email"
-              placeholder="name@gmail.com"
-              onChange={inputHandler}
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              data-testid="password-input"
-              name="password"
-              placeholder="••••••••"
-              onChange={inputHandler}
-            />
-          </div>
-          <div></div>
-          <button data-testid="signup-button" disabled={!isValid}>
-            회원가입
-          </button>
-        </form>
-        <p>
-          계정이 있나요? {''}
-          <button onClick={() => navigate('/signin')}>로그인하러 가기</button>
-        </p>
-      </Container>
-    </div>
+    <Container>
+      <div>Sign Up</div>
+      <Form onSubmit={signUpHandler}>
+        <Input
+          testId="email-input"
+          inputSize="medium"
+          name="email"
+          variant="primary"
+          placeholder="name@gmail.com"
+          onChange={inputHandler}
+        />
+        <Input
+          testId="password-input"
+          inputSize="medium"
+          name="password"
+          placeholder="••••••••"
+          onChange={inputHandler}
+        />
+        <Button testId="signup-button" variant="primary" size="medium" disabled={!isValid}>
+          회원가입
+        </Button>
+      </Form>
+      <Paragraph>
+        계정이 있나요? {''}
+        <button onClick={() => navigate('/signin')}>로그인하러 가기</button>
+      </Paragraph>
+    </Container>
   );
 };
 
@@ -77,3 +73,10 @@ const Container = styled.div`
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 `;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Paragraph = styled.p``;
