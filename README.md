@@ -13,6 +13,26 @@
 
 준비중...
 
+## 💭 Best Practice
+
+#### 선정 기준
+
+Best Practice를 선정하기 위한 토의를 통해 팀원들의 공통된 관심사는 아래와 같았습니다.
+
+- View와 Business Logic의 분리
+- 가독성과 재사용성이 높은 코드
+- 컴포넌트의 재사용성
+- 서버와 동일한 데이터 보장
+
+#### 선정된 Best Practice
+
+이러한 기준을 바탕으로 선정된 Best Practice는 크게 4가지 입니다.
+
+1. Context API의 사용하여 비즈니스 로직 분리
+2. 공통된 코드를 hook이나 util로 분리
+3. 재사용 가능한 공통 UI 컴포넌트의 설계
+4. 데이터 변경 이벤트 발생시 서버 데이터 refetch
+
 ## 🛠️ 설계 및 구현 설명
 
 ### Authorization
@@ -34,6 +54,10 @@
 #### 주요 구성 및 동작
 
 ### TodoList
+
+Best Practice에 대한 토의 결과, TodoList에 관련한 공통된 관심사는 아래와 같았습니다.
+
+-
 
 #### 설계 및 개발 방향
 
