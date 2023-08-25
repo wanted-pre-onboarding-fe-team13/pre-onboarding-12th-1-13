@@ -41,6 +41,7 @@ const SignIn = () => {
             testId="email-input"
             name="email"
             placeholder="you@example.com"
+            autoComplete="username"
             onChange={handleInputValueChange}
             variant="primary"
             inputSize="large"
@@ -50,6 +51,7 @@ const SignIn = () => {
             name="password"
             type="password"
             placeholder="Minimum 8 characters"
+            autoComplete="current-password"
             variant="primary"
             inputSize="large"
             onChange={handleInputValueChange}
@@ -111,6 +113,8 @@ const TextButton = styled.button`
   background: none;
   border: none;
   font-size: inherit;
+  position: relative;
+  top: -2px;
   text-decoration: underline;
   cursor: pointer;
   &:hover {

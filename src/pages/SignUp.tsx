@@ -44,12 +44,14 @@ const SignUp = () => {
             onChange={inputHandler}
             variant="primary"
             inputSize="large"
+            autoComplete="username"
           />
           <Input
             testId="password-input"
             name="password"
             type="password"
             placeholder="Minimum 8 characters"
+            autoComplete="current-password"
             inputSize="large"
             variant="primary"
             onChange={inputHandler}
@@ -111,6 +113,8 @@ const TextButton = styled.button`
   background: none;
   border: none;
   font-size: inherit;
+  position: relative;
+  top: -2px;
   text-decoration: underline;
   cursor: pointer;
   &:hover {
