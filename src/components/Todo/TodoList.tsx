@@ -1,6 +1,9 @@
 import styled from 'styled-components';
-import theme from '../../styles/theme';
+
 import { Task } from '../../types/todo';
+
+import theme from '../../styles/theme';
+
 import { TodoItem } from './TodoItem';
 
 interface Props {

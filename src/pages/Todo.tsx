@@ -1,10 +1,15 @@
-import styled from 'styled-components';
 import { useMemo } from 'react';
+
+import styled from 'styled-components';
+
 import { useContextNullCheck } from '../hooks/useContextNullCheck';
+
+import { getToday } from '../utils/date';
+
+import theme from '../styles/theme';
+
 import { NewTodoForm } from '../components/Todo/NewTodoForm';
 import { TodoList } from '../components/Todo/TodoList';
-import { getToday } from '../utils/date';
-import theme from '../styles/theme';
 
 export const Todo = () => {
   const { state: todos } = useContextNullCheck();

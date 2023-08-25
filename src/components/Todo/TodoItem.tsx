@@ -1,10 +1,15 @@
 import { useState } from 'react';
+
+import styled from 'styled-components';
+
 import { Task } from '../../types/todo';
+
 import { useContextNullCheck } from '../../hooks/useContextNullCheck';
+
+import theme from '../../styles/theme';
+
 import Button from '../Button';
 import Input from '../Input';
-import styled from 'styled-components';
-import theme from '../../styles/theme';
 
 export const TodoItem = (task: Task) => {
   const { todo, isCompleted } = task;

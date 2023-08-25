@@ -1,8 +1,11 @@
-import styled from 'styled-components';
 import { ChangeEvent, MouseEventHandler, KeyboardEvent, useState } from 'react';
+
+import styled from 'styled-components';
+
+import { useContextNullCheck } from '../../hooks/useContextNullCheck';
+
 import Input from '../Input';
 import Button from '../Button';
-import { useContextNullCheck } from '../../hooks/useContextNullCheck';
 
 export const NewTodoForm = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
