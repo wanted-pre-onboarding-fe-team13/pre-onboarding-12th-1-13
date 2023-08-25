@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TodoDispatchContext, TodoStateContext } from '../context/TodoProvider/TodoProvider';
+import { TodoDispatchContext, TodoStateContext } from '../context/TodoProvider';
 
 export const useContextNullCheck = () => {
   const state = useContext(TodoStateContext);

@@ -1,4 +1,4 @@
-import { TodoProvider } from '../context/TodoProvider/TodoProvider';
+import { TodoProvider } from '../context/TodoProvider';
 import TodoGuard from '../guards/Todoguard';
 import { Todo } from '../pages';
 
