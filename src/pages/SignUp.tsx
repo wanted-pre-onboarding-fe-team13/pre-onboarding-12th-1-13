@@ -28,6 +28,10 @@ const SignUp = () => {
     }
   };
 
+  const goToSignIn = () => {
+    navigate('/signin');
+  };
+
   return (
     <Container>
       <Title>Sign Up</Title>
@@ -35,31 +39,29 @@ const SignUp = () => {
         <InputContainer>
           <Input
             testId="email-input"
-            inputSize="large"
             name="email"
-            variant="primary"
             placeholder="you@example.com"
             onChange={inputHandler}
+            variant="primary"
+            inputSize="large"
           />
           <Input
             testId="password-input"
-            type="password"
-            inputSize="large"
             name="password"
-            variant="primary"
+            type="password"
             placeholder="Minimum 8 characters"
+            inputSize="large"
+            variant="primary"
             onChange={inputHandler}
           />
         </InputContainer>
-        <ButtonContainer>
-          <Button testId="signup-button" size="large" variant="primary" disabled={!isValid}>
-            회원가입
-          </Button>
-        </ButtonContainer>
+        <Button testId="signup-button" size="large" disabled={!isValid}>
+          회원가입
+        </Button>
       </Form>
       <Paragraph>
-        계정이 있나요? {''}
-        <TextButton onClick={() => navigate('/signin')}>로그인하러 가기</TextButton>
+        계정이 있나요?
+        <TextButton onClick={goToSignIn}>로그인하러 가기</TextButton>
       </Paragraph>
     </Container>
   );
@@ -85,12 +87,6 @@ const Title = styled.h1`
   padding-top: 24px;
 `;
 
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-
 const Form = styled.form`
   flex: 1;
   padding-top: 56px;
@@ -100,15 +96,15 @@ const Form = styled.form`
   gap: 36px;
 `;
 
-const Paragraph = styled.div`
-  display: flex;
-  text-align: center;
-`;
-
-const ButtonContainer = styled.div`
+const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+`;
+
+const Paragraph = styled.div`
+  display: flex;
+  text-align: center;
 `;
 
 const TextButton = styled.button`
@@ -118,7 +114,7 @@ const TextButton = styled.button`
   text-decoration: underline;
   cursor: pointer;
   &:hover {
-    color: #2af0a3; // Neon green color when hovered
+    color: #2af0a3;
     text-decoration: none;
   }
 `;
