@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState, useEffect, createContext, useCallback, PropsWithChildren } from 'react';
 
 import { signin, signup } from '../apis/auth';
