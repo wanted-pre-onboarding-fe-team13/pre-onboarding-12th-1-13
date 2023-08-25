@@ -11,7 +11,7 @@ import theme from '../styles/theme';
 import { NewTodoForm } from '../components/Todo/NewTodoForm';
 import { TodoList } from '../components/Todo/TodoList';
 
-export const Todo = () => {
+const Todo = () => {
   const { state: todos } = useTodoContext();
   const notCompletedTodo = useMemo(() => {
     return todos.filter(i => !i.isCompleted).length;
@@ -30,6 +30,8 @@ export const Todo = () => {
     </Container>
   );
 };
+
+export default Todo;
 
 const Container = styled.div`
   position: relative;

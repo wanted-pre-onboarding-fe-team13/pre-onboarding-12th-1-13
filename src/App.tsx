@@ -2,7 +2,7 @@ import { ThemeProvider } from 'styled-components';
 
 import theme from './styles/theme';
 
-import Router from './routes';
+import Router from './routes/Router';
 
 import AuthProvider from './context/AuthProvider';
 
