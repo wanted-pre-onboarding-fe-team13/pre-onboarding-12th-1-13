@@ -58,14 +58,14 @@ const variantStyles = ({ theme, variant }: { theme: DefaultTheme; variant?: stri
     case 'tertiary':
       return `
         background-color: white;
-        color: ${theme.color.primary};  
-        border: 1px solid ${theme.color.primary}; 
+        color: black;  
+        border: 1px solid ${theme.color.grey200}; 
       `;
     case 'disabled':
       return `
         background-color: ${theme.color.grey100};
         color: ${theme.color.grey600}; 
-        cursor: not-allowed;
+        cursor: inherit;
       `;
     default:
       return '';
