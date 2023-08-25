@@ -31,6 +31,7 @@ const SignIn = () => {
   const goToSignUp = () => {
     navigate('/signup');
   };
+
   return (
     <Container>
       <Title>Sign In</Title>
@@ -54,18 +55,13 @@ const SignIn = () => {
             onChange={handleInputValueChange}
           />
         </InputContainer>
-        <ButtonContainer>
-          <Button type="submit" size={'large'} disabled={!isValid}>
-            로그인
-          </Button>
-          <Button variant={'tertiary'} size={'large'} onClick={goToSignUp}>
-            회원가입
-          </Button>
-        </ButtonContainer>
+        <Button type="submit" size={'large'} disabled={!isValid}>
+          로그인
+        </Button>
       </Form>
       <Paragraph>
-        계정이 없나요? {''}
-        <TextButton onClick={() => navigate('/signup')}>회원 가입하러 가기</TextButton>
+        계정이 없나요?
+        <TextButton onClick={goToSignUp}>회원 가입하러 가기</TextButton>
       </Paragraph>
     </Container>
   );
@@ -75,14 +71,14 @@ export default SignIn;
 
 const Container = styled.div`
   display: flex;
+  background-color: white;
   flex-direction: column;
-  border-radius: 10px;
-  padding: 24px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   align-items: center;
+  padding: 24px;
   width: 300px;
   height: 600px;
-  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 `;
 
 const Title = styled.h1`
@@ -106,10 +102,9 @@ const InputContainer = styled.div`
   gap: 12px;
 `;
 
-const ButtonContainer = styled.div`
+const Paragraph = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  text-align: center;
 `;
 
 const TextButton = styled.button`
@@ -119,11 +114,7 @@ const TextButton = styled.button`
   text-decoration: underline;
   cursor: pointer;
   &:hover {
-    color: #2af0a3; // Neon green color when hovered
+    color: #2af0a3;
     text-decoration: none;
   }
-`;
-const Paragraph = styled.div`
-  display: flex;
-  text-align: center;
 `;
