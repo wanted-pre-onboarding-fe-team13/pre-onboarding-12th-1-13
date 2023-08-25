@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { useState, useMemo } from 'react';
 import { useContextNullCheck } from '../hooks/useContextNullCheck';
-import { TodoList } from '../components/todo/TodoList';
-import { NewTodoForm } from '../components/todo';
+import { TodoList } from '../components/Todo/TodoList';
+import { NewTodoForm } from '../components/Todo';
 import Button from '../components/Button';
 
 export const Todo = () => {
