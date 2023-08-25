@@ -1,100 +1,115 @@
 import { useState } from 'react';
-import { Task } from '../../types/todo';
-import { useContextNullCheck } from '../../hooks/useContextNullCheck';
-import Button from '../Button';
-import Input from '../Input';
+
 import styled from 'styled-components';
+
+import { Task } from '../../types';
+
+import { useTodoContext } from '../../hooks/useTodoContext';
+
 import theme from '../../styles/theme';
 
-export const TodoItem = (task: Task) => {
-  const { todo, isCompleted } = task;
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [EditedTodo, settEditedtodo] = useState(todo);
+import Button from '../Button';
+import Input from '../Input';
 
-  const { dispatch } = useContextNullCheck();
+interface TodoItemProps {
+  task: Task;
+}
+
+export const TodoItem = ({ task }: TodoItemProps) => {
+  const { todo, isCompleted } = task;
+
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [editedTodo, setEditedTodo] = useState(todo);
+
+  const { dispatch } = useTodoContext();
+
   const { updateTask, deleteTask } = dispatch;
 
-  const handleCheckTodo = async () => {
+  const handleCheckTodo = () => {
     try {
-      await updateTask({ ...task, isCompleted: !isCompleted });
+      updateTask({ ...task, isCompleted: !isCompleted });
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
-  const handleUpdateTodo = async () => {
+  const handleUpdateTodo = () => {
     try {
-      await updateTask({ ...task, todo: EditedTodo });
+      updateTask({ ...task, todo: editedTodo });
       setIsEditMode(false);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
-  const handleDeleteTodo = async () => {
+  const handleDeleteTodo = () => {
     try {
-      await deleteTask(task);
+      deleteTask(task);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
   return (
     <TodoItemWrap>
-      <label>
-        <StyledCheckbox type="checkbox" checked={isCompleted} onChange={handleCheckTodo} />
-        {!isEditMode && <TodoTxt $isCompleted={isCompleted}>{todo}</TodoTxt>}
-        {isEditMode && (
-          <Input
-            data-testid="modify-input"
-            defaultValue={todo}
-            onChange={e => settEditedtodo(e.target.value)}
-            style={{ width: '74%', padding: '8px 10px', fontSize: '15px' }}
-            variant="primary"
-          />
-        )}
-      </label>
       {!isEditMode && (
-        <div>
-          <Button
-            data-testid="modify-button"
-            onClick={() => setIsEditMode(true)}
-            style={{ marginRight: '5px' }}
-            size="small"
-            variant="secondary"
-          >
-            수정
-          </Button>
-          <Button
-            data-testid="delete-button"
-            onClick={handleDeleteTodo}
-            size="small"
-            variant="secondary"
-          >
-            삭제
-          </Button>
-        </div>
+        <>
+          <label>
+            <StyledCheckbox type="checkbox" checked={isCompleted} onChange={handleCheckTodo} />
+            <TodoTxt $isCompleted={isCompleted}>{todo}</TodoTxt>
+          </label>
+          <ButtonContainer>
+            <Button
+              data-testid="modify-button"
+              onClick={() => setIsEditMode(true)}
+              size="small"
+              variant="secondary"
+            >
+              수정
+            </Button>
+            <Button
+              data-testid="delete-button"
+              onClick={handleDeleteTodo}
+              size="small"
+              variant="secondary"
+            >
+              삭제
+            </Button>
+          </ButtonContainer>
+        </>
       )}
+
       {isEditMode && (
-        <div>
-          <Button
-            data-testid="submit-button"
-            onClick={handleUpdateTodo}
-            style={{ marginRight: '5px' }}
-            size="small"
-            variant="secondary"
-          >
-            제출
-          </Button>
-          <Button
-            data-testid="cancel-button"
-            onClick={() => setIsEditMode(false)}
-            size="small"
-            variant="secondary"
-          >
-            취소
-          </Button>
-        </div>
+        <>
+          <label>
+            <StyledCheckbox type="checkbox" checked={isCompleted} onChange={handleCheckTodo} />
+            <Input
+              type="text"
+              data-testid="modify-input"
+              defaultValue={todo}
+              onChange={e => setEditedTodo(e.target.value)}
+              variant="primary"
+            />
+          </label>
+          <ButtonContainer>
+            <Button
+              data-testid="submit-button"
+              onClick={handleUpdateTodo}
+              size="small"
+              variant="secondary"
+            >
+              제출
+            </Button>
+            <Button
+              data-testid="cancel-button"
+              onClick={() => setIsEditMode(false)}
+              size="small"
+              variant="secondary"
+            >
+              취소
+            </Button>
+          </ButtonContainer>
+        </>
       )}
     </TodoItemWrap>
   );
@@ -114,6 +129,12 @@ const TodoItemWrap = styled.li`
     display: flex;
     align-items: center;
     width: 68%;
+
+    input[type='text'] {
+      width: 74%;
+      padding: 8px 10px;
+      font-size: 15px;
+    }
   }
 `;
 
@@ -136,5 +157,11 @@ const StyledCheckbox = styled.input`
 
   &:checked {
     background-position: 20px 0;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  button:nth-of-type(1) {
+    margin-right: 5px;
   }
 `;
