@@ -59,7 +59,7 @@ const SignUp = () => {
       </Form>
       <Paragraph>
         계정이 있나요? {''}
-        <button onClick={() => navigate('/signin')}>로그인하러 가기</button>
+        <TextButton onClick={() => navigate('/signin')}>로그인하러 가기</TextButton>
       </Paragraph>
     </Container>
   );
@@ -71,7 +71,7 @@ const Container = styled.div`
   display: flex;
   background-color: white;
   flex-direction: column;
-  align-items: flex;
+  align-items: center;
   padding: 24px;
   width: 300px;
   height: 600px;
@@ -100,10 +100,25 @@ const Form = styled.form`
   gap: 36px;
 `;
 
-const Paragraph = styled.p``;
+const Paragraph = styled.div`
+  display: flex;
+  text-align: center;
+`;
 
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+`;
+
+const TextButton = styled.button`
+  background: none;
+  border: none;
+  font-size: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    color: #2af0a3; // Neon green color when hovered
+    text-decoration: none;
+  }
 `;

@@ -63,6 +63,10 @@ const SignIn = () => {
           </Button>
         </ButtonContainer>
       </Form>
+      <Paragraph>
+        계정이 없나요? {''}
+        <TextButton onClick={() => navigate('/signup')}>회원 가입하러 가기</TextButton>
+      </Paragraph>
     </Container>
   );
 };
@@ -106,4 +110,20 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+`;
+
+const TextButton = styled.button`
+  background: none;
+  border: none;
+  font-size: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  &:hover {
+    color: #2af0a3; // Neon green color when hovered
+    text-decoration: none;
+  }
+`;
+const Paragraph = styled.div`
+  display: flex;
+  text-align: center;
 `;
