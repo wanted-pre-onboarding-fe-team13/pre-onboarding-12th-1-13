@@ -15,16 +15,13 @@ export const NewTodoForm = () => {
   };
 
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (!newTodo) {
-      return;
-    }
-
     try {
       if (e.key === 'Enter' && e.nativeEvent.isComposing === false) {
         e.preventDefault();
-
+        if (!newTodo) {
+          return;
+        }
         addTask(newTodo);
-
         setIsFormOpen(false);
         setNewTodo('');
       }
