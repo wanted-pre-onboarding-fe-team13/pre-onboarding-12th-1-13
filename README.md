@@ -9,6 +9,13 @@
 <img src="https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square"/> <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/styled component-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=Axios&logoColor=white"/> <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=React Router&logoColor=white">  
 </br>
 
+## 🖥 배포
+- vercel을 활용하여 프로젝트를 배포하였습니다. 
+- 도메인 : https://pre-onboarding-12th-1-13.vercel.app
+
+<br/>
+
+
 ## 🎬 데모 영상
 
 #### 1. 회원가입 및 로그인
