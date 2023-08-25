@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { useState, useMemo } from 'react';
 import { useContextNullCheck } from '../hooks/useContextNullCheck';
-import { TodoList } from '../components/todo/TodoList';
-import { NewTodoForm } from '../components/todo';
+import { TodoList } from '../components/Todo/TodoList';
 import Button from '../components/Button';
+import { NewTodoForm } from '../components/Todo/NewTodoForm';
 
 export const Todo = () => {
   const { state: todos } = useContextNullCheck();
