@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
+import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
+  ${normalize}
+  ${reset}
+
   @font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
