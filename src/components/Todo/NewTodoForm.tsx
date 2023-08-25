@@ -45,6 +45,7 @@ export const NewTodoForm = () => {
     <NewTodoContainer>
       {isFormOpen && (
         <Input
+          data-testid="new-todo-input"
           style={{ width: '67%' }}
           variant="primary"
           inputSize="large"

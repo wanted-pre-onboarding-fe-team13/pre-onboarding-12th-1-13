@@ -59,9 +59,10 @@ const TodoSubTit = styled.p`
 `;
 
 const Divider = styled.hr`
-  margin: 20px 0;
+  margin: 25px 0;
   width: 100%;
   height: 1px;
-  background: ${theme.color.grey50};
+  background: ${theme.color.grey300};
+  opacity: 0.4;
   border: 0;
 `;
