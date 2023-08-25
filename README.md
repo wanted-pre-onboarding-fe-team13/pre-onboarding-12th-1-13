@@ -72,10 +72,18 @@ Best Practice를 선정하기 위한 토의를 통해 팀원들의 공통된 관
 
 ### TodoList
 
-Best Practice에 대한 토의 결과, TodoList에 관련한 공통된 관심사는 아래와 같았습니다.
-
--
-
 #### 설계 및 개발 방향
 
+사용자의 데이터를 효율적으로 관리하며, 사용자에게 서버와 동일한 데이터를 보장하는 것이 주요 목표였습니다.
+
+- Context API를 통한 비즈니스 로직 분리
+
+  - 상태 및 액션의 전역 관리 : 사용자의 데이터와 Todo 관련한 동작들을 전역적으로 관리하여 데이터와 관련 로직을 쉽게 재사용하고 변경할 수 있습니다.
+  - 서버와의 연동 용이 : 사용자의 데이터가 전역에서 관리되므로 변경사항 발생 시 중앙에서 서버 데이터를 refetch하여 어플리케이션 전반적으로 서버와 동일한 데이터를 가지도록 했습니다.
+
 #### 주요 구성 및 동작
+
+- TodoProvider (src/context/TodoProvider.tsx)
+
+  - 기능에 따른 Context 분리 : '상태'와 '액션'의 두 가지로 나눠 'TodoStateContext'와 'TodoDispatchContext'로 context를 분리했습니다.
+  - 서버 데이터 refetching : TodoProvider가 렌더링될 때 혹은 update, delete과 같은 데이터 변경사항이 발생했을 때 서버 데이터를 refetch하도록 로직을 구성했습니다.
