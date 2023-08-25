@@ -8,12 +8,15 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = ({ inputSize, variant, testId, ...rest }: InputProps) => {
-  return <StyledInput data-testid={testId} inputSize={inputSize} variant={variant} {...rest} />;
+  return <StyledInput data-testid={testId} $inputSize={inputSize} $variant={variant} {...rest} />;
 };
 
 export default Input;
 
-const StyledInput = styled.input<InputProps>`
+const StyledInput = styled.input<{
+  $inputSize?: 'small' | 'medium' | 'large';
+  $variant?: 'primary' | 'secondary';
+}>`
   padding: 8px 16px;
   border: none;
   outline: none;
@@ -24,8 +27,8 @@ const StyledInput = styled.input<InputProps>`
     border: 1px solid ${({ theme }) => theme.color.grey200};
     outline: none;
   }
-  ${({ inputSize }) => {
-    switch (inputSize) {
+  ${({ $inputSize }) => {
+    switch ($inputSize) {
       case 'small':
         return `
           font-size: 12px;
@@ -44,7 +47,7 @@ const StyledInput = styled.input<InputProps>`
     }
   }}
 
-  ${({ variant, theme }) => inputVariantStyles({ variant, theme })}
+  ${({ $variant, theme }) => inputVariantStyles({ variant: $variant, theme })}
 `;
 
 const inputVariantStyles = ({
