@@ -31,7 +31,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
-    const accessToken = await signin({ email, password });
+    const accessToken = await signin(email, password);
 
     setLocalStorage(accessToken);
 
@@ -39,7 +39,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   const regist = useCallback(async (email: string, password: string) => {
-    await signup({ email, password });
+    await signup(email, password);
   }, []);
 
   if (loading) {
