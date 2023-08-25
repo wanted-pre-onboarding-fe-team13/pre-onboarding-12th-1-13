@@ -108,7 +108,7 @@ const TodoItemWrap = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 8px;
+  padding-bottom: 15px;
 
   label {
     display: flex;
@@ -118,10 +118,12 @@ const TodoItemWrap = styled.li`
 `;
 
 const TodoTxt = styled.span<TodoTxtProps>`
+  width: 74%;
   margin-left: 10px;
   font-size: 15px;
   color: ${({ isCompleted }) => (isCompleted ? theme.color.grey200 : theme.color.fontPrimary)};
   text-decoration: ${({ isCompleted }) => (isCompleted ? 'line-through' : 'none')};
+  word-break: break-word;
 `;
 
 const StyledCheckbox = styled.input`
