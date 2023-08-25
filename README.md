@@ -14,14 +14,22 @@
 #### 1. 회원가입 및 로그인
 
 - 회원가입 시 로그인 페이지로 리다이렉트 됩니다.
-
-<img width="300" height="390" src="https://github.com/wanted-pre-onboarding-fe-team13/pre-onboarding-12th-1-13/assets/112925579/be474f98-e45b-46dc-8d18-6f3ae667491c"/>
+  <table border="0" >
+    <tr>
+      <td><img width="300" height="390" src="https://github.com/wanted-pre-onboarding-fe-team13/pre-onboarding-12th-1-13/assets/112925579/be474f98-e45b-46dc-8d18-6f3ae667491c"/>
+      </td>
+    </tr>
+  </table>
 
 #### 2. Todo 목록
 
-- Todo을 생성, 수정, 삭제할 수 있습니다.
-
-<img width="300" height="390" src="https://github.com/wanted-pre-onboarding-fe-team13/pre-onboarding-12th-1-13/assets/112925579/9f29ccfa-d394-4e49-9c46-ed0fbe46a27a"/>
+- Todo를 생성, 수정, 삭제할 수 있습니다.
+  <table border="0" >
+    <tr>
+      <td><img  width="300" height="390" src="https://github.com/wanted-pre-onboarding-fe-team13/pre-onboarding-12th-1-13/assets/112925579/9f29ccfa-d394-4e49-9c46-ed0fbe46a27a"/>
+      </td>
+    </tr>
+  </table>
 
 ## 💭 Best Practice
 
