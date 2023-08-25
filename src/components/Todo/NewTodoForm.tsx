@@ -2,7 +2,7 @@ import { ChangeEvent, MouseEventHandler, KeyboardEvent, useState } from 'react';
 
 import styled from 'styled-components';
 
-import { useContextNullCheck } from '../../hooks/useContextNullCheck';
+import { useTodoContext } from '../../hooks/useTodoContext';
 
 import Input from '../Input';
 import Button from '../Button';
@@ -10,7 +10,7 @@ import Button from '../Button';
 export const NewTodoForm = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [newTodo, setNewTodo] = useState<string>('');
-  const { dispatch } = useContextNullCheck();
+  const { dispatch } = useTodoContext();
   const { addTask } = dispatch;
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {

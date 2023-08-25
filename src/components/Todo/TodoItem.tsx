@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Task } from '../../types/todo';
 
-import { useContextNullCheck } from '../../hooks/useContextNullCheck';
+import { useTodoContext } from '../../hooks/useTodoContext';
 
 import theme from '../../styles/theme';
 
@@ -16,7 +16,7 @@ export const TodoItem = (task: Task) => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [EditedTodo, settEditedtodo] = useState(todo);
 
-  const { dispatch } = useContextNullCheck();
+  const { dispatch } = useTodoContext();
   const { updateTask, deleteTask } = dispatch;
 
   const handleCheckTodo = async () => {

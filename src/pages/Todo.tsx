@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import styled from 'styled-components';
 
-import { useContextNullCheck } from '../hooks/useContextNullCheck';
+import { useTodoContext } from '../hooks/useTodoContext';
 
 import { getToday } from '../utils/date';
 
@@ -12,7 +12,7 @@ import { NewTodoForm } from '../components/Todo/NewTodoForm';
 import { TodoList } from '../components/Todo/TodoList';
 
 export const Todo = () => {
-  const { state: todos } = useContextNullCheck();
+  const { state: todos } = useTodoContext();
   const notCompletedTodo = useMemo(() => {
     return todos.filter(i => !i.isCompleted).length;
   }, [todos]);
