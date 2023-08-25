@@ -32,25 +32,30 @@ const SignUp = () => {
     <Container>
       <Title>Sign Up</Title>
       <Form onSubmit={signUpHandler}>
-        <Input
-          testId="email-input"
-          inputSize="medium"
-          name="email"
-          variant="primary"
-          placeholder="you@example.com"
-          onChange={inputHandler}
-        />
-        <Input
-          testId="password-input"
-          inputSize="medium"
-          name="password"
-          variant="primary"
-          placeholder="Minimum 8 characters"
-          onChange={inputHandler}
-        />
-        <Button testId="signup-button" variant="primary" size="medium" disabled={!isValid}>
-          회원가입
-        </Button>
+        <InputContainer>
+          <Input
+            testId="email-input"
+            inputSize="large"
+            name="email"
+            variant="primary"
+            placeholder="you@example.com"
+            onChange={inputHandler}
+          />
+          <Input
+            testId="password-input"
+            type="password"
+            inputSize="large"
+            name="password"
+            variant="primary"
+            placeholder="Minimum 8 characters"
+            onChange={inputHandler}
+          />
+        </InputContainer>
+        <ButtonContainer>
+          <Button testId="signup-button" size="large" variant="primary" disabled={!isValid}>
+            회원가입
+          </Button>
+        </ButtonContainer>
       </Form>
       <Paragraph>
         계정이 있나요? {''}
@@ -75,13 +80,30 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 48px;
   text-align: center;
+  padding-top: 24px;
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 `;
 
 const Form = styled.form`
+  flex: 1;
+  padding-top: 56px;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 36px;
 `;
 
 const Paragraph = styled.p``;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
