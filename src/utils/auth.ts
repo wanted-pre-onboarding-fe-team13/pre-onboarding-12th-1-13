@@ -1,3 +1,13 @@
+import { axiosInstance } from "../apis/axios";
+
+export const isValidEmail = (email: string) => {
+  return email.includes('@');
+};
+
+export const isValidPassword = (password: string) => {
+  return password.length >= 8;
+};
+
 export const jwtDecode = (accessToken: string) => {
   const base64Url = accessToken.split('.')[1];
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -50,11 +60,15 @@ export const setLocalStorage = (accessToken: string) => {
     }
 
     localStorage.setItem('access_token', accessToken);
-    
+  
+    axiosInstance.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+
     const { exp } = jwtDecode(accessToken);
 
     handleTokenExpired(exp);
   } catch (e) {
     localStorage.removeItem('access_token');
+
+    delete axiosInstance.defaults.headers.common.Authorization;
   }
 };
