@@ -58,6 +58,7 @@ export const NewTodoForm = () => {
           value={newTodo}
           onChange={onChange}
           onKeyDown={onKeyDown}
+          autoFocus
         />
       )}
       <AddTodoBtn type="button" data-testid="new-todo-add-button" onClick={handleSubmitNewTodo}>
