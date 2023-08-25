@@ -1,7 +1,7 @@
 // import { lazy } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import AuthGuard from '../guards/Authguard';
+import AuthGuard from '../guards/AuthGuard';
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
