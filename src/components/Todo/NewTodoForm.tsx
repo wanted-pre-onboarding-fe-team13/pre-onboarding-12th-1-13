@@ -14,14 +14,17 @@ export const NewTodoForm = () => {
     setNewTodo(e.target.value);
   };
 
-  const onKeyDown = async (e: KeyboardEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (!newTodo) {
       return;
     }
+
     try {
       if (e.key === 'Enter' && e.nativeEvent.isComposing === false) {
-        await addTask(newTodo);
+        e.preventDefault();
+
+        addTask(newTodo);
+
         setIsFormOpen(false);
         setNewTodo('');
       }
