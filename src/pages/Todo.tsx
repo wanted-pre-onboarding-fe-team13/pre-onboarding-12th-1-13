@@ -1,52 +1,67 @@
 import styled from 'styled-components';
-import { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useContextNullCheck } from '../hooks/useContextNullCheck';
-import Button from '../components/Button';
 import { NewTodoForm } from '../components/Todo/NewTodoForm';
 import { TodoList } from '../components/Todo/TodoList';
+import { getToday } from '../utils/date';
+import theme from '../styles/theme';
 
 export const Todo = () => {
   const { state: todos } = useContextNullCheck();
-  const [isFormOpen, setOIsFormOpen] = useState(false);
   const notCompletedTodo = useMemo(() => {
     return todos.filter(i => !i.isCompleted).length;
   }, [todos]);
+  const { year, month, date, day } = getToday();
 
   return (
-    <div>
-      <p>할 일 {notCompletedTodo}개 남음</p>
+    <Container>
+      <Title>
+        {year}년 {month}월 {date}일 <p>{day}</p>
+      </Title>
+      <TodoSubTit>할 일 {notCompletedTodo}개 남음</TodoSubTit>
+      <Divider />
       <TodoList todos={todos} />
-      <FormOpenBtn onClick={() => setOIsFormOpen(!isFormOpen)}>+</FormOpenBtn>
-      {isFormOpen && <NewTodoForm closeForm={() => setOIsFormOpen(!isFormOpen)} />}
-    </div>
+      <NewTodoForm />
+    </Container>
   );
 };
 
-const FormOpenBtn = styled(Button)`
-  padding: 0;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 45px;
-  line-height: 45px;
-  color: white;
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  width: 300px;
+  height: 600px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+`;
 
-  span {
-    position: absolute;
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #fff;
-  }
+const Title = styled.h1`
+  width: 100%;
+  font-size: 25px;
+  text-align: left;
 
-  & span:nth-child(1) {
-    transform: rotate(90deg);
-    left: 13px;
-    top: 24px;
+  p {
+    margin-bottom: 0;
+    margin-top: 10px;
+    font-size: 15px;
+    color: ${theme.color.grey300};
   }
+`;
 
-  & span:nth-child(2) {
-    left: 13px;
-    top: 24px;
-  }
+const TodoSubTit = styled.p`
+  width: 100%;
+  font-size: 15px;
+  text-align: left;
+  color: ${theme.color.primary};
+`;
+
+const Divider = styled.hr`
+  width: 100%;
+  height: 1px;
+  background: ${theme.color.grey50};
+  border: 0;
 `;
