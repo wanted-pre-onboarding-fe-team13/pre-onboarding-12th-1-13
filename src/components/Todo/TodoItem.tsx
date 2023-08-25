@@ -23,7 +23,7 @@ export const TodoItem = (task: Task) => {
     try {
       await updateTask({ ...task, isCompleted: !isCompleted });
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -32,7 +32,7 @@ export const TodoItem = (task: Task) => {
       await updateTask({ ...task, todo: EditedTodo });
       setIsEditMode(false);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -40,7 +40,7 @@ export const TodoItem = (task: Task) => {
     try {
       await deleteTask(task);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
