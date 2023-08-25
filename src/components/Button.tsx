@@ -19,7 +19,7 @@ export default Button;
 
 const StyledButton = styled.button<ButtonProps>`
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
   ${({ size }) => sizeStyles[size || 'medium']}
   ${({ variant, disabled, theme }) =>

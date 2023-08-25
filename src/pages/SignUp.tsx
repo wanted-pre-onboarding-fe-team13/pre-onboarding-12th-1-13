@@ -30,7 +30,7 @@ const SignUp = () => {
 
   return (
     <Container>
-      <div>Sign Up</div>
+      <Title>Sign Up</Title>
       <Form onSubmit={signUpHandler}>
         <Input
           testId="email-input"
@@ -44,6 +44,7 @@ const SignUp = () => {
           testId="password-input"
           inputSize="medium"
           name="password"
+          variant="primary"
           placeholder="••••••••"
           onChange={inputHandler}
         />
@@ -65,13 +66,17 @@ const Container = styled.div`
   display: flex;
   background-color: white;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex;
   padding: 25px;
-  width: 40vw;
-  height: 60vh;
-  min-width: 200px;
+  width: 300px;
+  height: 600px;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+const Title = styled.h1`
+  font-size: 3rem;
+  text-align: center;
 `;
 
 const Form = styled.form`
