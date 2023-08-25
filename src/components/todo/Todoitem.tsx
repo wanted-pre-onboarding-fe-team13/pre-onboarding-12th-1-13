@@ -4,7 +4,7 @@ import { useContextNullCheck } from '../../hooks/useContextNullCheck';
 import Button from '../Button';
 import Input from '../Input';
 
-export const TodoItem = (task: Task) => {
+const TodoItem = (task: Task) => {
   const { todo } = task;
 
   const [editedTodo, seteditedTodo] = useState<Task>(task);
@@ -46,3 +46,5 @@ export const TodoItem = (task: Task) => {
     </li>
   );
 };
+
+export default TodoItem;

@@ -1,5 +1,5 @@
 import { Task } from '../../types/todo';
-import { TodoItem } from './Todoitem';
+import TodoItem from './TodoItem';
 
 interface Props {
   todos: Task[];

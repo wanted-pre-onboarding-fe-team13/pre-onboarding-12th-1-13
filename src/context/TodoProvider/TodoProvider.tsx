@@ -24,7 +24,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const fetchTodos = async () => {
-    const { data } = await getTodos();
+    const data = await getTodos();
     setTodoState(data);
     return data;
   };
@@ -37,6 +37,7 @@ export const TodoProvider = ({ children }: { children: ReactNode }) => {
   async function updateTask(todo: Task) {
     const { id, todo: content, isCompleted } = todo;
     await updateTodo(id, content, isCompleted);
+    fetchTodos();
   }
 
   async function deleteTask(todo: Task) {
