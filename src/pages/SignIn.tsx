@@ -111,6 +111,8 @@ const TextButton = styled.button`
   background: none;
   border: none;
   font-size: inherit;
+  position: relative;
+  top: -2px;
   text-decoration: underline;
   cursor: pointer;
   &:hover {
