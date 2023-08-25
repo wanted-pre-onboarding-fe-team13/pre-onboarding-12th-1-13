@@ -16,7 +16,7 @@ export const Todo = () => {
   return (
     <Container>
       <Title>
-        {year}년 {month}월 {date}일 <p>{day}</p>
+        {year}년 {month + 1}월 {date}일 <p>{day}</p>
       </Title>
       <TodoSubTit>할 일 {notCompletedTodo}개 남음</TodoSubTit>
       <Divider />

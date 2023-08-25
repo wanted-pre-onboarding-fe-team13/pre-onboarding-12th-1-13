@@ -11,19 +11,22 @@ export const TodoList = ({ todos }: Props) => {
   return (
     <TodoListWrap>
       {todos?.map(task => <TodoItem key={task.id} {...task} />)}
-      {todos.length === 0 && <p>할 일이 없습니다.</p>}
+      {todos.length === 0 && <NoTodoTxt>할 일이 없습니다.</NoTodoTxt>}
     </TodoListWrap>
   );
 };
 
 const TodoListWrap = styled.ul`
-  max-height: 400px;
+  position: relative;
+  height: 400px;
   width: 100%;
-  overflow-y: scroll;
+  overflow: auto;
+`;
 
-  p {
-    color: ${theme.color.grey300};
-    text-align: center;
-    margin-top: 160px;
-  }
+const NoTodoTxt = styled.li`
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: ${theme.color.grey300};
 `;
