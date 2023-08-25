@@ -55,7 +55,7 @@ const SignIn = () => {
             onChange={handleInputValueChange}
           />
         </InputContainer>
-        <Button type="submit" size={'large'} disabled={!isValid}>
+        <Button testId="signin-button" type="submit" size={'large'} disabled={!isValid}>
           로그인
         </Button>
       </Form>
